@@ -1,0 +1,505 @@
+<!doctype html>
+<html><head>
+
+	
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Financial Health Survey</title>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=600">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="cleartype" content="on">
+
+
+	
+    <script src="js/economist.js"></script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+
+    <!-- Custom CSS -->
+    <style>
+
+.bs-flipper {
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -o-perspective: 1000;
+  perspective: 1000;
+
+    border: 1px solid #ccc;
+	text-align:center;
+}
+
+	.bs-flipper:hover .flipper,  
+  .bs-flipper.hover .flipper {
+		-webkit-transform: rotateY(180deg);
+		-moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+		transform: rotateY(180deg);
+	}
+
+.bs-flipper, .front, .back {
+	width: 300px;
+	height: 265px;
+  
+}
+
+.flipper {
+	-webkit-transition: 0.5s;
+	-webkit-transform-style: preserve-3d;
+
+	-moz-transition: 0.5s;
+	-moz-transform-style: preserve-3d;
+  
+  -o-transition: 0.5s;
+	-o-transform-style: preserve-3d;
+
+	transition: 0.5s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+.front, .back {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	position: absolute;
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+}
+
+.front {
+
+	z-index: 2;
+}
+
+.back {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+
+	width: 95%;
+	height: 95%;
+	margin: 5%;
+}
+
+.front .name {
+	font-size: 2em;
+	display: inline-block;
+	background: rgba(33, 33, 33, 0.9);
+	color: #f8f8f8;
+	font-family: Courier;
+	padding: 5px 10px;
+	border-radius: 5px;
+	bottom: 60px;
+	left: 25%;
+	position: absolute;
+	text-shadow: 0.1em 0.1em 0.05em #333;
+
+	-webkit-transform: rotate(-20deg);
+	-moz-transform: rotate(-20deg);
+  -o-transform: rotate(-20deg);
+	transform: rotate(-20deg);
+}
+
+.spend-item {
+	font-size: 40px;
+    background-color: #903a91;
+	color:white;
+	width: 95%;
+	height: 95%;
+
+	bottom:0;
+}
+
+.save-item {
+	font-size: 40px;
+    background-color: #f6a031;
+	color:white;
+	width: 95%;
+	height: 95%;
+
+}
+
+.borrow-item {
+	font-size: 40px;
+    background-color: #3686c6;
+	color:white;
+	width: 95%;
+	height: 95%;
+
+}
+
+.plan-item {
+	font-size: 40px;
+    background-color: #91c43e;
+	color:white;
+	width: 95%;
+	height: 95%;
+
+}
+
+.total-item {
+	font-size: 40px;
+    background-color: #60636a;
+	color:white;
+	width: 95%;
+	height: 95%;
+}        
+
+
+.back-title {
+	font-weight: bold;
+	color: #00304a;
+	position: absolute;
+	top: 5px;
+	left: 0;
+	right: 0;
+	text-align: center;
+	font-family: arial;
+	font-size: 2em;
+}
+
+.back p {
+	position: absolute;
+	top: 50px;
+	left: 0;
+	right: 0;
+	text-align: center;
+	padding: 0 20px;
+  font-family: arial;
+  line-height: 2em;
+}
+
+.total-logo {
+	position: absolute;
+	top: 115px;
+	left: 112px;
+	width: 160px;
+	height: 117px;
+	background: url("img/Total.png") 0 0 no-repeat;
+}
+
+.spend-logo {
+	position: absolute;
+	top: 115px;
+	left: 112px;
+	width: 160px;
+	height: 117px;
+	background: url("img/Spend.png") 0 0 no-repeat;
+}
+.save-logo {
+	position: absolute;
+	top: 115px;
+	left: 112px;
+	width: 160px;
+	height: 117px;
+	background: url("img/Save.png") 0 0 no-repeat;
+}
+.borrow-logo {
+	position: absolute;
+	top: 115px;
+	left: 112px;
+	width: 160px;
+	height: 117px;
+	background: url("img/Borrow.png") 0 0 no-repeat;
+}
+.plan-logo {
+	position: absolute;
+	top: 115px;
+	left: 112px;
+	width: 160px;
+	height: 117px;
+	background: url("img/Plan.png") 0 0 no-repeat;
+}
+
+.textbig{
+    left: 0px;
+    width: 95%;
+    color:white;
+    position:absolute;   
+	top:20px; 
+	font-size: 72px;
+	text-align: center;
+	font-family: arial;
+}
+
+.textsmall{
+    left: 0px;
+    width: 95%;
+    color:white;
+    position:absolute;   
+	bottom:20px; 
+	font-size: 32px;
+	text-align: center;
+	font-family: arial;
+}
+.container{
+    position:relative;
+    text-align:left;
+    margin:20px;
+}
+    </style>
+
+</head>
+
+<div class="container">
+
+	<div class="row">
+    <h2>Financial Health Score</h2>
+      <div class="col-xs-12 col-md-6">
+	  
+       <div class="bs-flipper thumbnail" ontouchstart="this.classList.toggle('hover');">
+  <div class="flipper">
+    <div class="front">
+	<div class="total-logo"></div>
+	<div class="total-item"></div>
+	<div class="textbig"> <span id="total">.</span> </div>
+	<div class="textsmall"> FinHealth</div>
+    </div>
+    <div class="back">
+      <div class="back-title">Financial Health ...</div>
+		<p>is when our day-to-day activities are manageable, and our financial decisions lead to resiliency and opportunity to live the lives that we want o lead.</p>
+
+    </div>
+	
+  </div>
+</div>
+      </div>
+</div>
+	<div class="row">
+    <h2>Financial Health Components</h2>
+      <div class="col-xs-12 col-md-3">
+       <div class="bs-flipper thumbnail" ontouchstart="this.classList.toggle('hover');">
+  <div class="flipper">
+    <div class="front">
+	
+	<div class="spend-item"></div>
+	<div class="textbig"> <span id="spend">.</span> </div>
+	<div class="textsmall"> Spend</div>
+    </div>
+    <div class="back">
+      <div class="back-title">Spending matters...</div>
+      <p>because an individual’s ability to successfully manage cash flow andspend less than income directly affects the ability to build savings and be resilient in the face of unexpected events.</p>
+    
+    </div>
+  </div>
+</div>
+      </div>
+
+
+
+<!-- 2 -->
+ <div class="col-xs-12 col-md-3">
+       <div class="bs-flipper thumbnail" ontouchstart="this.classList.toggle('hover');">
+  <div class="flipper">
+    <div class="front">
+    
+	<div class="save-item"></div>
+	<div class="textbig"> <span id="save">.</span> </div>
+	<div class="textsmall"> Save</div>
+    </div>
+    <div class="back">
+            <div class="back-title">Saving matters...</div>
+      <p>because having sufficient liquid savings is important for coping with an unexpected expense.  In the long-run achieving financial security and take advantage of opportunities such as investing in a home or a child’s education.   </p>
+      
+     
+    </div>
+  </div>
+</div>
+      </div>
+
+
+<!-- 3-->
+
+ <div class="col-xs-12 col-md-3">
+       <div class="bs-flipper thumbnail" ontouchstart="this.classList.toggle('hover');">
+  <div class="flipper">
+    <div class="front">
+    
+	<div class="borrow-item"></div>
+	<div class="textbig"> <span id="borrow">.</span> </div>
+	<div class="textsmall"> Borrow</div>
+    </div>
+    <div class="back">
+            <div class="back-title">Borrowing matters...</div>
+      <p>because having a manageable debt load suggests that individuals will not be  over-indebted.  Also, an individual’s ability to access low-cost credit affects their resiliency and opportunity.</p>
+      
+     
+    </div>
+  </div>
+</div>
+      </div>
+
+
+<!-- 4-->
+
+
+
+ <div class="col-xs-12 col-md-3">
+       <div class="bs-flipper thumbnail" ontouchstart="this.classList.toggle('hover');">
+  <div class="flipper">
+    <div class="front">
+    
+	<div class="plan-item"></div>
+	<div class="textbig"> <span id="plan">.</span> </div>
+	<div class="textsmall"> Plan</div>
+    </div>
+    <div class="back">
+            <div class="back-title">Planning matters...</div>
+      <p>Planning ahead for expenses indicates that individuals are future-oriented and interested in improving their financial situation</p>
+      
+     
+    </div>
+  </div>
+</div>
+      </div>
+
+
+
+
+
+
+
+
+
+    </div>
+    
+</div>
+
+    <script type="text/javascript">
+//Snippet to perform a vlookup
+Array.prototype.vlookup = function(needle,index,exactmatch){
+    index = index || 0;
+    exactmatch = exactmatch || false;
+    for (var i = 0; i < this.length; i++){
+        var row = this[i];
+
+        if ((exactmatch && row[0]===needle) || row[0].toLowerCase().indexOf(needle.toLowerCase()) !== -1)
+            return (index < row.length ? row[index] : row);
+    }
+    return null;
+}
+//Snippet to parse parameters from url
+function getQueryVariable(variable)
+{
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+    if(pair[0] == variable){return pair[1];}
+  }
+  return(false);
+}  
+var tq1 = decodeURI(getQueryVariable("q1"));
+var tq2 = decodeURI(getQueryVariable("q2"));
+var tq3 = decodeURI(getQueryVariable("q3"));
+var tq4 = decodeURI(getQueryVariable("q4"));
+var tq5 = decodeURI(getQueryVariable("q5"));
+var tq6 = decodeURI(getQueryVariable("q6"));
+var tq7 = decodeURI(getQueryVariable("q7"));
+var tq8 = decodeURI(getQueryVariable("q8"));
+
+var q1 = [
+["Generally spend much less than income", 1],
+["Generally spend a little less than income", 2],
+["Generally spend about equal to income", 3],
+["Generally spend a little more than income", 4],
+["Generally spend much more than income", 5]
+];
+
+
+var q2 = [
+["Pay all bills on time ", 1],
+["Pay most bills on time", 2],
+["Pay some bills on time", 3],
+["Pay very few bills on time", 4]
+];
+
+var q3 = [
+["6 months or more", 1],
+["At least 3 months, but less than 6 months", 2],
+["At least 1 month, but less than 3 months", 3],
+["At least 1 week, but less than 1 month", 4],
+["Less than 1 week", 5]
+];
+
+var q4 = [
+["Very confident", 1],
+["Moderately confident", 2],
+["Slightly confident", 3],
+["Not at all confident", 4]
+
+];
+
+var q5 = [
+["Do not have any debt", 1],
+["Have a manageable amount of debt", 2],
+["Have a bit too much debt", 3],
+["Have far too much debt", 4]
+];
+
+var q6 = [
+["Excellent ", 1],
+["Good", 2],
+["Fair", 3],
+["Poor ", 4],
+["Very Poor", 5],
+["I don’t know", 6]
+];
+
+var q7 = [
+["Very confident", 1],
+["Moderately confident", 2],
+["Slightly confident", 3],
+["Not at all confident", 4],
+["I don’t have any insurance", 5]
+];
+
+var q8 = [
+["Always plan ahead ", 1],
+["Occasionally plan ahead ", 2],
+["Rarely plan ahead ", 3],
+["Never plan ahead ", 4],
+["Don’t need to plan ahead because there is always enough money to cover expenses", 5]
+];
+
+
+var q1num=q1.vlookup(tq1,1);
+var q2num=q2.vlookup(tq2,1);
+var q3num=q3.vlookup(tq3,1);
+var q4num=q4.vlookup(tq4,1);
+var q5num=q5.vlookup(tq5,1);
+var q6num=q6.vlookup(tq6,1);
+var q7num=q7.vlookup(tq7,1);
+var q8num=q8.vlookup(tq8,1);
+
+var spend=Math.round((q1num + q2num)/ 2);
+var save=Math.round((q3num + q4num)/ 2);
+var borrow=Math.round((q5num + q6num)/ 2);
+var plan=Math.round((q7num + q8num)/ 2);
+var total=Math.round((spend + save + borrow + plan)/ 4);
+
+document.getElementById("spend").innerHTML = spend;
+document.getElementById("save").innerHTML = save;
+document.getElementById("borrow").innerHTML = borrow;
+document.getElementById("plan").innerHTML = plan;
+document.getElementById("total").innerHTML = total;
+</script>
+
+
+</body></html>
